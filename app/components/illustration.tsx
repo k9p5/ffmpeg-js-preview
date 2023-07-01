@@ -159,20 +159,6 @@ export function Illustration() {
               fill="#000"
             />
           </mask>
-          <g mask="url(#a)">
-            <path
-              d="M534 430c22.644 0 41-18.356 41-41s-18.356-41-41-41-41 18.356-41 41 18.356 41 41 41z"
-              fill="#000"
-            />
-            <path
-              d="M561.109 419.759L524.498 372.6H517.6v32.786h5.518v-25.778l33.659 43.488a41.047 41.047 0 004.332-3.337z"
-              fill="url(#paint5_linear_155_13)"
-            />
-            <path
-              d="M550.856 372.6h-5.467v32.8h5.467v-32.8z"
-              fill="url(#paint6_linear_155_13)"
-            />
-          </g>
         </g>
         <defs>
           <linearGradient
@@ -378,10 +364,10 @@ export function Illustration() {
             strokeWidth={1.16501}
           />
         </g>
-        <path d="M306.5 429.911l-46.188-80-46.187 80H306.5z" fill="#fff" />
+
         <path
           d="M389.125 372.411v35M371.625 389.911h35"
-          stroke="#999"
+          stroke="#FFF"
           strokeWidth={3.5625}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -402,22 +388,6 @@ export function Illustration() {
             fill="#000"
           />
         </mask>
-        <g mask="url(#a)">
-          <path
-            d="M534 430c22.644 0 41-18.356 41-41s-18.356-41-41-41-41 18.356-41 41 18.356 41 41 41z"
-            fill="#000"
-            stroke="#fff"
-            strokeWidth={2.66667}
-          />
-          <path
-            d="M561.109 419.759L524.498 372.6H517.6v32.786h5.518v-25.778l33.659 43.488a41.047 41.047 0 004.332-3.337z"
-            fill="url(#paint5_linear_155_43)"
-          />
-          <path
-            d="M550.856 372.6h-5.467v32.8h5.467v-32.8z"
-            fill="url(#paint6_linear_155_43)"
-          />
-        </g>
         <defs>
           <filter
             id="filter0_d_155_43"

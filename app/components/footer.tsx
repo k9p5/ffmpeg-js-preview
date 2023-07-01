@@ -1,62 +1,33 @@
-export function Footer({ children }: React.PropsWithChildren<{}>) {
+export function Footer() {
   return (
     <footer>
       <a
         target="_blank"
         href="https://chatg.pt/weather"
-        aria-label="Vercel"
+        aria-label="diffusion-studio"
         rel="noreferrer"
-        className="vercel"
+        className="diffusion-studio"
       >
-        <svg
-          width="106"
-          height="24"
-          viewBox="0 0 106 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path d="M13.875 0L27.75 24H0L13.875 0Z" fill="var(--fg)" />
-          <path
-            d="M59.85 12.75C59.85 8.8875 57 6.1875 52.9125 6.1875C48.825 6.1875 45.975 8.8875 45.975 12.75C45.975 16.5375 49.05 19.3125 53.2875 19.3125C55.6125 19.3125 57.7125 18.45 59.0625 16.875L56.5125 15.4125C55.725 16.2 54.5625 16.6875 53.2875 16.6875C51.4125 16.6875 49.8 15.675 49.2375 14.1375L49.125 13.875H59.7375C59.8125 13.5 59.85 13.125 59.85 12.75ZM49.0875 11.625L49.1625 11.4C49.65 9.7875 51.075 8.8125 52.875 8.8125C54.7125 8.8125 56.1 9.7875 56.5875 11.4L56.6625 11.625H49.0875Z"
-            fill="var(--fg)"
-          />
-          <path
-            d="M100.238 12.75C100.238 8.8875 97.3875 6.1875 93.3 6.1875C89.2125 6.1875 86.3625 8.8875 86.3625 12.75C86.3625 16.5375 89.4375 19.3125 93.675 19.3125C96 19.3125 98.1 18.45 99.45 16.875L96.9 15.4125C96.1125 16.2 94.95 16.6875 93.675 16.6875C91.8 16.6875 90.1875 15.675 89.625 14.1375L89.5125 13.875H100.125C100.2 13.5 100.238 13.125 100.238 12.75ZM89.475 11.625L89.55 11.4C90.0375 9.7875 91.4625 8.8125 93.2625 8.8125C95.1 8.8125 96.4875 9.7875 96.975 11.4L97.05 11.625H89.475Z"
-            fill="var(--fg)"
-          />
-          <path
-            d="M82.2375 10.6125L84.7875 9.14999C83.5875 7.27499 81.45 6.22499 78.8625 6.22499C74.775 6.22499 71.925 8.92499 71.925 12.7875C71.925 16.65 74.775 19.35 78.8625 19.35C81.45 19.35 83.5875 18.3 84.7875 16.425L82.2375 14.9625C81.5625 16.0875 80.3625 16.725 78.8625 16.725C76.5 16.725 74.925 15.15 74.925 12.7875C74.925 10.425 76.5 8.84999 78.8625 8.84999C80.325 8.84999 81.5625 9.48749 82.2375 10.6125Z"
-            fill="var(--fg)"
-          />
-          <path d="M105.863 2.1H102.862V18.975H105.863V2.1Z" fill="var(--fg)" />
-          <path
-            d="M48.1875 2.1H44.7375L38.1375 13.5L31.5375 2.1H28.05L38.1375 19.5L48.1875 2.1Z"
-            fill="var(--fg)"
-          />
-          <path
-            d="M69.4125 9.675C69.75 9.675 70.0875 9.7125 70.425 9.7875V6.6C67.875 6.675 65.475 8.1 65.475 9.8625V6.6H62.475V18.975H65.475V13.6125C65.475 11.2875 67.0875 9.675 69.4125 9.675Z"
-            fill="var(--fg)"
-          />
-        </svg>
+        Diffusion Studio
       </a>
 
       <div className="details">
         <p>
-          Built with{" "}
-          <a target="_blank" href="https://nextjs.org" rel="noreferrer">
-            Next.js
-          </a>{" "}
-          on{" "}
-          <a target="_blank" href="https://vercel.com" rel="noreferrer">
-            Vercel
-          </a>
+          This software uses code of{" "}
+          <a href="http://ffmpeg.org">FFmpeg</a> 
+          {" "}licensed under the{" "}
+          <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
+            LGPLv2.1
+          </a>.
         </p>
-        {children}
+        <p>
+          Built with Vercel
+        </p>
       </div>
 
       <a
         target="_blank"
-        href="https://github.com/steven-tey/weathergpt"
+        href="https://github.com/diffusion-studio/ffmpeg-js"
         className="source"
         rel="noreferrer"
       >

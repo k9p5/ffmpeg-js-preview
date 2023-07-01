@@ -161,12 +161,10 @@ main {
 }
 
 .meta {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 0px;
   margin-top: 40vh;
 }
 
@@ -206,6 +204,7 @@ main {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-360deg);
   }
@@ -215,6 +214,7 @@ main {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: var(--circle-opacity);
   }
@@ -274,19 +274,19 @@ main {
   transform-origin: center center;
 }
 
-.illustration .orbits > g {
+.illustration .orbits>g {
   animation: spin 60s linear both infinite;
 }
 
-.illustration .orbits > g:nth-child(2) {
+.illustration .orbits>g:nth-child(2) {
   animation-duration: 80s;
 }
 
-.illustration .orbits > g:nth-child(3) {
+.illustration .orbits>g:nth-child(3) {
   animation-duration: 100s;
 }
 
-.illustration .orbits > g:nth-child(4) {
+.illustration .orbits>g:nth-child(4) {
   animation-duration: 120s;
 }
 
@@ -344,8 +344,10 @@ footer .source {
   text-decoration: none;
 }
 
-.vercel {
-  height: 24px;
+.diffusion-studio {
+  text-decoration: none;
+  font-size: inherit;
+  color: var(--fg);
 }
 
 /* nav */
@@ -370,15 +372,13 @@ nav {
 
 nav:after {
   content: "";
-  background: linear-gradient(
-    to left,
-    var(--accents-2) 20%,
-    var(--accents-2) 44%,
-    var(--accents-6) 50%,
-    var(--accents-3) 60%,
-    var(--accents-2) 63%,
-    var(--accents-2) 100%
-  );
+  background: linear-gradient(to left,
+      var(--accents-2) 20%,
+      var(--accents-2) 44%,
+      var(--accents-6) 50%,
+      var(--accents-3) 60%,
+      var(--accents-2) 63%,
+      var(--accents-2) 100%);
   z-index: -1;
   background-position-x: var(--x);
   background-size: 200% auto;
@@ -431,13 +431,11 @@ nav:after {
 }
 
 .nav-stroke {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0),
-    var(--accents-4) 20%,
-    var(--accents-2) 67.19%,
-    rgba(0, 0, 0, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0),
+      var(--accents-4) 20%,
+      var(--accents-2) 67.19%,
+      rgba(0, 0, 0, 0));
   height: 1px;
   position: absolute;
   top: -1px;
@@ -466,6 +464,17 @@ nav:after {
   left: 0;
   border-radius: inherit;
   background: rgba(255, 255, 255, 0.08);
+}
+
+.select-button {
+  background-color: transparent;
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 0.6rem;
+  font-size: medium;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 @media (max-width: 420px) {
@@ -501,11 +510,9 @@ nav:after {
   }
 
   .nav-pill {
-    background: radial-gradient(
-      132.5% 137.28% at 69.9% 88.75%,
-      #dadada 0%,
-      #f1f1f1 100%
-    );
+    background: radial-gradient(132.5% 137.28% at 69.9% 88.75%,
+        #dadada 0%,
+        #f1f1f1 100%);
   }
 
   .nav-link {
@@ -517,15 +524,19 @@ nav:after {
   .gradient[data-theme="dark"] {
     display: block;
   }
+
   .gradient[data-theme="light"] {
     display: none;
   }
+
   .details p:nth-of-type(2) {
     color: var(--accents-5);
   }
+
   .illustration[data-theme="dark"] {
     display: block;
   }
+
   .illustration[data-theme="light"] {
     display: none;
   }
@@ -559,10 +570,6 @@ nav:after {
 }
 
 @media (max-width: 600px) {
-  .meta {
-    gap: 8px;
-  }
-
   footer {
     gap: 12px;
   }
@@ -576,8 +583,8 @@ nav:after {
     height: 14px;
   }
 
-  .vercel,
-  .vercel svg {
+  .diffusion-studio,
+  .diffusion-studio svg {
     height: 18px;
   }
 }

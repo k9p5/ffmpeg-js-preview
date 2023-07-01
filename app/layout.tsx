@@ -2,18 +2,9 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "WeatherGPT - ChatGPT Plugin to get the weather of any given location",
+  title: "FFmpeg.js: A WebAssembly-powered FFmpeg Interface for Browsers",
   description:
-    "WeatherGPT is a ChatGPT Plugin to get the weather of any given location. Built with Next.js and served from Vercel's Edge Network.",
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "WeatherGPT - ChatGPT Plugin to get the weather of any given location",
-    description:
-      "WeatherGPT is a ChatGPT Plugin to get the weather of any given location. Built with Next.js and served from Vercel's Edge Network.",
-    creator: "@steventey",
-  },
-  metadataBase: new URL("https://weathergpt.vercel.app"),
+    "Welcome to FFmpeg.js, an innovative library that offers a WebAssembly-powered interface for utilizing FFmpeg in the browser. 🌐💡",
   themeColor: "#FFF",
 };
 
