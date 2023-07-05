@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   height: 100%;
@@ -9,6 +13,11 @@ body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 body {
@@ -56,6 +65,7 @@ p {
 
 h1 {
   font-size: 60px;
+  font-weight: 600;
 }
 
 .description {
@@ -74,7 +84,7 @@ h1 {
   color: var(--accents-7);
   text-decoration: none;
   padding: 8px 16px;
-  margin-bottom: 8px;
+  margin-top: 50px;
 }
 
 .pill:hover {
@@ -301,7 +311,7 @@ footer {
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 48px;
+  padding: 0 48px 48px 48px; 
   box-sizing: border-box;
   font-size: 16px;
 }
@@ -342,12 +352,6 @@ footer .source {
   font-size: inherit;
   color: var(--accents-8);
   text-decoration: none;
-}
-
-.diffusion-studio {
-  text-decoration: none;
-  font-size: inherit;
-  color: var(--fg);
 }
 
 /* nav */
@@ -468,9 +472,9 @@ nav:after {
 
 .select-button {
   background-color: transparent;
-  color: white;
+  color: var(--fg);
   padding: 0.875rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--accents-3);
   border-radius: 0.6rem;
   font-size: medium;
   cursor: pointer;
@@ -530,6 +534,7 @@ nav:after {
   }
 
   .details p:nth-of-type(2) {
+    font-size: small;
     color: var(--accents-5);
   }
 
@@ -566,6 +571,10 @@ nav:after {
 
   nav {
     margin-top: 32px;
+  }
+
+  h1 {
+    font-size: 45px;
   }
 }
 

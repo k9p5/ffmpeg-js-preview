@@ -134,7 +134,6 @@ export function Illustration() {
           stroke="#000"
           strokeWidth={1.16501}
         />
-        <path d="M306.5 429.911l-46.188-80-46.187 80H306.5z" fill="#000" />
         <path
           d="M389.125 372.411v35M371.625 389.911h35"
           stroke="#999"

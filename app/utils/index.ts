@@ -1,3 +1,4 @@
+export * from './confetti';
 
 export const showFileDialog = async (accept: string) => {
     return new Promise<File | undefined>((resolve) => {
@@ -41,4 +42,30 @@ export const downloadData = (file: Uint8Array, mimeType: string, name: string) =
         new Blob([file], { type: mimeType })
     )
     a.click();
+}
+
+export const objectFlip = (obj: Object) => {
+    return Object.fromEntries(Object.entries(obj).map(a => a.reverse()))
+}
+
+export const parseFFmpegMetadata = (data: Record<string, number>) => (msg: string) => {
+    if (msg.match(/Duration:/)) {
+        const splits = msg.split(',');
+        const duration = splits[0].replace(/Duration:/, '').trim();
+        Object.assign(data, { duration: Date.parse(`01 Jan 1970 ${duration} GMT`) / 1000 })
+    }
+    if (msg.match(/Stream #0:0/)) {
+        console.log(msg.split(','))
+        const splits = msg.split(',');
+
+        for (const split of splits) {
+            if (split.match(/[0-9]*x[0-9]*/)) {
+                Object.assign(data, { width: parseInt(split.split('x')[0]) });
+                Object.assign(data, { height: parseInt(split.split('x')[1]) });
+            }
+            if (split.match(/fps/)) {
+                Object.assign(data, { fps: parseInt(split.replace('fps', '').trim()) });
+            }
+        }
+    }
 }

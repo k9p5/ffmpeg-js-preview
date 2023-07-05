@@ -5,7 +5,7 @@ export const useFFmpeg = () => {
     const [ffmpeg, setFFmpeg] = useState<FFmpeg>();
 
     useEffect(() => {
-        const ffmpeg = new FFmpeg();
+        const ffmpeg = new FFmpeg({ log: false });
 
         ffmpeg.whenReady(() => {
             setFFmpeg(ffmpeg);
