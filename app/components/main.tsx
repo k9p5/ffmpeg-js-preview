@@ -15,7 +15,7 @@ export function Main() {
    
     const handleFileLoad = async () => {
         const file = await utils.showFileDialog(
-            'video/mp4, video/webm, video/quicktime, audio/ogg, video/avi, video/x-ms-wmv'
+            'video/mp4, video/webm, video/quicktime, audio/ogg, video/avi, video/x-ms-wmv, video/x-matroska'
         );
 
         if (!file) throw new Error();
@@ -64,13 +64,13 @@ export function Main() {
                     </div>
                 </>
             )}
-            {fileUrl && (
+            {fileUrl && ffmpeg && (
                 <Editor  
                     onCancel={handleOnCancel}
                     fileName={fileName}
                     fileUrl={fileUrl}
                     blob={fileBlob.current!}
-                    ffmpeg={ffmpeg!}
+                    ffmpeg={ffmpeg}
                 />
             )}
         </main>

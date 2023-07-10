@@ -2,10 +2,11 @@ import "./globals.css";
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-  title: "FFmpeg.js: A WebAssembly-powered Video to Video Converter",
-  description: "Convert your videos locally in the browser for free. No registration required. Supports MP4 to GIF, WEBM to GIF, AVI to MP4, MOV to GIF and many more conversions",
-  themeColor: "#FFF",
+  title: "FFmpeg.js: Web-based Video Converter and Trimmer",
+  description: "Select MP4, AVI, MOV, WEBM, MKV and other video files up to 2GB and create animated GIF images or convert them into other video formats. Free and high quality web video editor, for local file conversions and clip trimming.",
+  themeColor: "#000",
 };
+// Convert your videos locally. No registration required.
 
 export default function RootLayout({
   children,

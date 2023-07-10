@@ -6,7 +6,7 @@ import * as utils from "../utils";
 import { FFmpeg } from "@diffusion-studio/ffmpeg-js";
 import Script from "next/script";
 
-type Format = 'avi' | 'gif' | 'wmv' | 'ogg' | 'mov' | 'webm' | 'mp4';
+type Format = 'avi' | 'gif' | 'wmv' | 'ogg' | 'mov' | 'webm' | 'mp4' | 'mkv';
 
 const MimeTypeMap: Record<string, Format> = {
     'video/mp4': 'mp4',
@@ -15,6 +15,7 @@ const MimeTypeMap: Record<string, Format> = {
     'audio/ogg': 'ogg',
     'video/quicktime': 'mov',
     'video/webm': 'webm',
+    'video/x-matroska': 'mkv',
 }
 
 interface IEditor {
@@ -55,27 +56,24 @@ export function Editor(props: IEditor) {
             if(!timelineRef.current) return;
             const { ffmpeg } = props;
 
-            const meta = metadata;
-            const cb = utils.parseFFmpegMetadata(meta);
-            ffmpeg.onMessage(cb);
-            await ffmpeg.writeFile('probe', props.blob);
-            await ffmpeg.exec(['-i', 'probe']);
-            ffmpeg.removeOnMessage(cb);
-            setMetadata(meta);
+            const { streams, duration } = await ffmpeg.meta(props.blob);
+            const videoMeta = streams.video.at(0);
 
+            setMetadata({
+                duration: duration ?? 1,
+                width: videoMeta?.width ?? 1,
+                height: videoMeta?.height ?? 1,
+                fps: videoMeta?.fps ?? 1,
+            });
+
+        
             const tl = timelineRef.current;
             const imgWidth = (tl.clientHeight * 16 / 9);
             const count = Math.round(tl.clientWidth / imgWidth) + 1;
-            const step = meta.duration / count;
 
-            for (let i = 0; i < meta.duration; i += step) {
-                await ffmpeg.exec(['-ss', i.toString(), '-i', 'probe', '-frames:v', '1', 'image.jpg'])
-                try {
-                const res = await ffmpeg.readFile('image.jpg');
-                setImages(imgs => [...imgs, URL.createObjectURL(new Blob([res], { type: 'image/jpeg' }))])
-                } catch (e) { }
+            for await(const image of ffmpeg.thumbnails(props.blob, count)) {
+                setImages(imgs => [...imgs, URL.createObjectURL(image)]);
             }
-            ffmpeg.clearMemory();
         })()
     }, []);
 
@@ -172,19 +170,26 @@ export function Editor(props: IEditor) {
     }, [videoRef]);
 
     useEffect(() => {
+        const start = getVideoStart() ?? 0;
+        const stop = getVideoStop() ?? metadata.duration;
+        const fps = parseFloat(outputFps ?? metadata.fps.toString());
+        const duration = stop - start;
+        const totalFrames = Math.round(duration * fps);
+
         const progressCallback = (frame: number) => {
-            const totalFrames = Math.round(metadata.duration * metadata.fps);
             setProgress(Math.round(frame * 100 / totalFrames).toString())
         }
 
-        if(metadata.duration > 1 && metadata.fps > 1) {
+        if(converting) {
             props.ffmpeg.onProgress(progressCallback);
+        } else {
+            props.ffmpeg.removeOnProgress(progressCallback);
         }
         
         return () => {
             props.ffmpeg.removeOnProgress(progressCallback);
         }
-    }, [metadata.duration]);
+    }, [converting]);
 
     const updateCursorPosition = (currentTime: number) => {
         if(!videoRef.current || !timelineRef.current || !cursorRef.current) return;
@@ -235,7 +240,7 @@ export function Editor(props: IEditor) {
             }
         
             if(outputFormat == 'gif' && outputFps) {
-                const framerate = parseInt(outputFps);
+                const framerate = parseFloat(outputFps);
 
                 Object.assign(video, { framerate });
             }
